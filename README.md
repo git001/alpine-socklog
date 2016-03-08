@@ -9,12 +9,12 @@ This image is based on [Alpine Linux][ac11addb] and [socklog][022939b2]
 
 ## docker steps
 
-git clone ...
-cd ...
-docker build --rm -t mysocklog .
-docker run -it --rm --net host mysocklog
+git clone ...  
+cd ...  
+docker build --rm -t mysocklog .  
+docker run -it --rm --net host mysocklog  
 
 ## openshift
 
-oc new-project sysloger
-oc new-app ...
+oc new-project syslogger  
+oc new-app https://github.com/git001/alpine-socklog.git  
