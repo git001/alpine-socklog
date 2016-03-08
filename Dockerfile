@@ -14,6 +14,7 @@ RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/re
     && rm -rf /var/cache/apk/*
 
 EXPOSE 8514/udp
+USER default
 
 ENTRYPOINT ["/sbin/socklog"]
 
