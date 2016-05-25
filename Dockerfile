@@ -24,4 +24,4 @@ USER default
 ENTRYPOINT ["/sbin/socklog"]
 
 # CMD ["inet","0","8514"]
-CMD ["inet","0","${SYSLOG_PORT}"]
+CMD ["inet","0","$( echo ${SYSLOG_PORT} )"]
