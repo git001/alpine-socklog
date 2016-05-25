@@ -16,7 +16,10 @@ RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/re
     && cp /usr/share/zoneinfo/UTC /etc/localtime \
     && echo "UTC" >  /etc/timezone \
     && apk del tzdata \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* 
+
+COPY run-socklog /
+RUN chmod 755 /run-socklog
 
 EXPOSE 8514/udp
 USER default
