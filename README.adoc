@@ -1,4 +1,9 @@
 # Syslog docker image
+:icons: font
+:toc: macro
+:toc-title:
+
+toc::[]
 
 Due to the fact that most common syslog server (rsyslog, syslog-ng,...) was not designed for docker or paas I decided to create a small (~5 MB) image which receives sylsog messages and write it out to stdout.
 
