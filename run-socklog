@@ -1,0 +1,4 @@
+#!/bin/sh
+
+set -x
+exec /sbin/socklog inet 0 ${SYSLOG_PORT}
