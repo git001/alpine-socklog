@@ -12,12 +12,13 @@ This image is based on [Alpine Linux][ac11addb] and [socklog][022939b2]
 git clone https://github.com/git001/alpine-socklog.git  
 cd alpine-socklog  
 docker build --rm -t mysocklog .  
-docker run -it --rm --net host mysocklog  
+docker run -it --rm --net host mysocklog --env=SYSLOG_PORT=8514  
 
 ## openshift
 
 oc new-project syslogger  
 oc new-app https://github.com/git001/alpine-socklog.git  
+oc env dc/alpine-socklog SYSLOG_PORT=8514
 
 To be able to use this service you will need to add this to your project.
 
