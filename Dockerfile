@@ -7,9 +7,9 @@ LABEL io.openshift.tags syslog,socklog \
       io.k8s.description This Image receives syslog messages on port 8514 \
       io.openshift.expose-services 8514/udp:syslog
 
-#RUN echo 'http://dl-6.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
-RUN  apk add --no-cache --update \
-    socklog tzdata \
+RUN echo '@community http://dl-6.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
+    && apk add --no-cache --update \
+    socklog@community tzdata \
     && cp /usr/share/zoneinfo/UTC /etc/localtime \
     && echo "UTC" >  /etc/timezone \
     && apk del tzdata \
