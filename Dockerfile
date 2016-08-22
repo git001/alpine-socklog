@@ -8,6 +8,7 @@ LABEL io.openshift.tags syslog,socklog \
       io.openshift.expose-services 8514/udp:syslog
 
 RUN echo '@community http://dl-6.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
+    && apk update \
     && apk add --no-cache --update \
     socklog@community tzdata \
     && cp /usr/share/zoneinfo/UTC /etc/localtime \
