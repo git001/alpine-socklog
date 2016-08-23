@@ -5,7 +5,7 @@
 
 toc::[]
 
-**DEPRICATED!**
+**DEPRICATED!** use instead  https://github.com/git001/centos-socklog or  https://github.com/git001/rhel7-socklog
 
 Due to the fact that most common syslog server (rsyslog, syslog-ng,...) was not designed for docker or paas I decided to create a small (~5 MB) image which receives sylsog messages and write it out to stdout.
 
