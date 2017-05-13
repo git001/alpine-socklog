@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:latest
+FROM alpine:latest
 
 # Openshift labels
 # https://docs.openshift.com/enterprise/3.1/creating_images/metadata.html
