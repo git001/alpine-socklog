@@ -23,7 +23,7 @@ This image is based on https://www.alpinelinux.org/[Alpine Linux] and http://sma
 git clone https://github.com/git001/alpine-socklog.git
 cd alpine-socklog
 docker build --rm -t mysocklog .
-docker run -it --rm --net host mysocklog --env=SYSLOG_PORT=8514
+docker run -it --rm --net host --env=SYSLOG_PORT=8514 mysocklog
 ```
 
 ## openshift
