@@ -6,8 +6,10 @@ FROM gliderlabs/alpine:latest
 LABEL io.openshift.tags syslog,socklog \
       io.k8s.description This Image receives syslog messages on port 8514 \
       io.openshift.expose-services 8514/udp:syslog
-
-RUN echo '@community http://dl-6.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
+      
+# https://pkgs.alpinelinux.org/packages?name=socklog&branch=&repo=&arch=&maintainer=
+# RUN echo '@community http://dl-6.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
+RUN set -x \
     && apk update \
     && apk add --no-cache --update \
     socklog@community tzdata \
