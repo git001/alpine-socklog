@@ -12,7 +12,7 @@ LABEL io.openshift.tags syslog,socklog \
 RUN set -x \
     && apk update \
     && apk add --no-cache --update \
-    socklog@community tzdata \
+    socklog tzdata \
     && cp /usr/share/zoneinfo/UTC /etc/localtime \
     && echo "UTC" >  /etc/timezone \
     && apk del tzdata \
