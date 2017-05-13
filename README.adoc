@@ -5,15 +5,18 @@
 
 toc::[]
 
-for centos7: https://github.com/git001/centos-socklog
-for   rhel7: https://github.com/git001/rhel7-socklog
+[cols="2*"]
+|===
+|for centos7
+|https://github.com/git001/centos-socklog
+
+|for rhel7
+|https://github.com/git001/rhel7-socklog
+|===
 
 Due to the fact that most common syslog server (rsyslog, syslog-ng,...) was not designed for docker or paas I decided to create a small (~5 MB) image which receives sylsog messages and write it out to stdout.
 
-This image is based on [Alpine Linux][ac11addb] and [socklog][022939b2]
-
-  [ac11addb]: https://www.alpinelinux.org/ "Alpine Linux"
-  [022939b2]: http://smarden.org/socklog/socklog.8.html "socklog"
+This image is based on https://www.alpinelinux.org/[Alpine Linux] and http://smarden.org/socklog/socklog.8.html[socklog]
 
 ## docker steps
 ----
@@ -35,7 +38,15 @@ To be able to use this service you will need to add this to your project.
 
 ## docker hub
 
+### inet upd socket
 ----
 docker pull me2digital/tiny-syslog
-docker run -it --rm --net host me2digital/tiny-syslog --env=SYSLOG_PORT=8514
+docker run -it --rm --net host --env=SYSLOG_PORT=8514 me2digital/tiny-syslog
+----
+
+### unix socket
+
+----
+docker pull me2digital/tiny-syslog
+docker run -it --rm --net host --env=UNIX=/tmp/my_path me2digital/tiny-syslog
 ----
