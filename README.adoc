@@ -50,3 +50,24 @@ docker run -it --rm --net host --env=SYSLOG_PORT=8514 me2digital/tiny-syslog
 docker pull me2digital/tiny-syslog
 docker run -it --rm --net host --env=UNIX=/tmp/my_path me2digital/tiny-syslog
 ```
+
+## run and test
+
+Shell 001:
+
+```
+docker run --rm -it --env SYSLOG_PORT=7819 --net host  me2digital/tiny-syslog
++ [ -n  ]
++ exec /sbin/socklog inet 0 7819
+listening on 0.0.0.0:7819, starting.
+127.0.0.1: kern.notice: May 13 12:48:29 test: test
+127.0.0.1: kern.notice: May 13 12:49:39 test001: test
+127.0.0.1: kern.notice: May 13 12:49:53 auth: test
+``` 
+
+Shell 002
+```
+logger --udp --server 127.0.0.1 --port 7819 -t test test
+logger --udp --server 127.0.0.1 --port 7819 -t test001 test
+logger ---udp--server 127.0.0.1 --port 7819 -t auth test
+```
