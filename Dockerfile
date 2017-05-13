@@ -22,7 +22,7 @@ COPY run-socklog /
 RUN chmod 755 /run-socklog
 
 EXPOSE 8514/udp
-USER default
+# USER default
 
 #ENTRYPOINT ["/sbin/socklog"]
 #CMD ["inet","0","8514"]
