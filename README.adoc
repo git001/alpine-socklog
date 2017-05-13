@@ -53,6 +53,7 @@ docker run -it --rm --net host --env=UNIX=/tmp/my_path me2digital/tiny-syslog
 
 ## run and test
 
+### network
 Shell 001:
 
 ```
@@ -64,6 +65,23 @@ listening on 0.0.0.0:7819, starting.
 127.0.0.1: kern.notice: May 13 12:49:39 test001: test
 127.0.0.1: kern.notice: May 13 12:49:53 auth: test
 127.0.0.1: local0.info: May 13 12:54:19 auth: test
+``` 
+
+Shell 002
+```
+logger --udp --server 127.0.0.1 --port 7819 -t test test
+logger --udp --server 127.0.0.1 --port 7819 -t test001 test
+logger --udp --server 127.0.0.1 --port 7819 -t auth test
+logger --udp --server 127.0.0.1 --port 7819 -t auth --priority local0.info test
+```
+
+### /dev/log
+```
+docker run --rm -it --env UNIX=/dev/log me2digital/centos-socklog
+listening on /dev/log, starting.
+kern.notice: May 13 13:49:22 <someone>: test
+local0.info: May 13 13:49:47 test: aa
+local0.info: May 13 13:49:54 test: test001
 ``` 
 
 Shell 002
