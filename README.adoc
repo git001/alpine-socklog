@@ -63,11 +63,13 @@ listening on 0.0.0.0:7819, starting.
 127.0.0.1: kern.notice: May 13 12:48:29 test: test
 127.0.0.1: kern.notice: May 13 12:49:39 test001: test
 127.0.0.1: kern.notice: May 13 12:49:53 auth: test
+127.0.0.1: local0.info: May 13 12:54:19 auth: test
 ``` 
 
 Shell 002
 ```
 logger --udp --server 127.0.0.1 --port 7819 -t test test
 logger --udp --server 127.0.0.1 --port 7819 -t test001 test
-logger ---udp--server 127.0.0.1 --port 7819 -t auth test
+logger --udp --server 127.0.0.1 --port 7819 -t auth test
+logger --udp --server 127.0.0.1 --port 7819 -t auth --priority local0.info test
 ```
