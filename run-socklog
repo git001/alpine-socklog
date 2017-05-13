@@ -1,4 +1,10 @@
 #!/bin/sh
 
 set -x
-exec /sbin/socklog inet 0 ${SYSLOG_PORT}
+
+if [ -n "${UNIX}" ];
+then  
+  exec /usr/local/bin/socklog unix ${UNIX}
+else
+  exec /usr/local/bin/socklog inet 0 ${SYSLOG_PORT}
+fi
