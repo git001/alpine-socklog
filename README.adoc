@@ -78,16 +78,16 @@ logger --udp --server 127.0.0.1 --port 7819 -t auth --priority local0.info test
 ### /dev/log
 ```
 docker run --rm -it --env UNIX=/dev/log me2digital/centos-socklog
++ '[' -n /dev/log ']'
++ exec /usr/local/bin/socklog unix /dev/log
 listening on /dev/log, starting.
-kern.notice: May 13 13:49:22 <someone>: test
-local0.info: May 13 13:49:47 test: aa
-local0.info: May 13 13:49:54 test: test001
+local0.info: May 13 13:54:22 test: test001
+kern.notice: May 13 13:54:28 <someone>: test
 ``` 
 
 Shell 002
 ```
-logger --udp --server 127.0.0.1 --port 7819 -t test test
-logger --udp --server 127.0.0.1 --port 7819 -t test001 test
-logger --udp --server 127.0.0.1 --port 7819 -t auth test
-logger --udp --server 127.0.0.1 --port 7819 -t auth --priority local0.info test
+docker exec -it e5da3367e889 /bin/bash
+[root@e5da3367e889 /]# logger --socket /dev/log --tag test --priority local0.info test001
+[root@e5da3367e889 /]# logger --socket /dev/log test
 ```
