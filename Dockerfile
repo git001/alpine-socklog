@@ -21,7 +21,7 @@ RUN set -x \
 COPY run-socklog /
 RUN chmod 755 /run-socklog
 
-EXPOSE 8514/udp
+EXPOSE 8514
 # USER default
 
 #ENTRYPOINT ["/sbin/socklog"]
